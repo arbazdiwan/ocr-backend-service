@@ -1,8 +1,6 @@
 service: dev-ocr-backend-service
 runtime: nodejs20
 env: standard
-network:
-  name: default
 
 env_variables:
   APP_ENV: "dev"
