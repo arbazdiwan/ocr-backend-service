@@ -28,8 +28,11 @@ jobs:
       - id: install-dependencies
         name: Install node dependencies
         run: npm install
+      - uses: "google-github-actions/auth@v2"
+        with:
+          credentials_json: ${{ secrets.OCR_DEPLOYMENT_SERVICE_ACCOUNT }}
+          project_id: ${{ secrets.PROJECT_ID }}
       - id: Deploy
         uses: google-github-actions/deploy-appengine@v2
         with:
-          credentials: ${{ secrets.OCR_DEPLOYMENT_SERVICE_ACCOUNT }}
           deliverables: dev-app.yaml
