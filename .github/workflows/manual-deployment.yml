@@ -28,9 +28,6 @@ jobs:
       - id: install-dependencies
         name: Install node dependencies
         run: npm install
-      - id: build-app
-        name: Build App
-        run: npm run build
       - id: Deploy
         uses: google-github-actions/deploy-appengine@v0
         with:
