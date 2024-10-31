@@ -1,0 +1,38 @@
+name: Manual Deployment
+on:
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: "Enter branch to deploy"
+        required: true
+        default: "dev"
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    # env:
+    #   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+    #   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+    #   AWS_REGION: ${{ secrets.AWS_REGION }}
+    steps:
+      - id: checkout
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.inputs.branch }}
+      - id: node-setup
+        name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: "20"
+      - id: install-dependencies
+        name: Install node dependencies
+        run: npm install
+      - id: build-app
+        name: Build App
+        run: npm run build
+      - id: Deploy
+        uses: google-github-actions/deploy-appengine@v0
+        with:
+          credentials: ${{ secrets.OCR_DEPLOYMENT_SERVICE_ACCOUNT }}
+          deliverables: dev-app.yaml
