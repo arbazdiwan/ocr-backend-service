@@ -7,3 +7,4 @@ env_variables:
   PROJECT_ID: "ocr-dev-440305"
   TZ: IST
   NODE_OPTIONS: ""
+  GOOGLE_CLOUD_BUCKET_NAME: "dev-ocr-demo-1"
