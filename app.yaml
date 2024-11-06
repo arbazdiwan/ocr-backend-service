@@ -7,5 +7,6 @@ network:
 env_variables:
   APP_ENV: "prod"
   PROJECT_ID: "ocr-dev-440305"
+  GOOGLE_CLOUD_PROJECT_ID: "ocr-dev-440305"
   TZ: IST
   NODE_OPTIONS: ""
