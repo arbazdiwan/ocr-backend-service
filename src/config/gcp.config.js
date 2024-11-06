@@ -10,7 +10,11 @@ const gcp = () => {
       credential: admin.credential.cert({
         type: "service_account",
         projectId: process.env.GOOGLE_CLOUD_PROJECT_ID,
-        privateKey: process.env.GOOGLE_CLOUD_SERVICE_ACCOUNT_PRIVATE_KEY,
+        privateKey:
+          process.env.GOOGLE_CLOUD_SERVICE_ACCOUNT_PRIVATE_KEY.replace(
+            /\\n/g,
+            "\n"
+          ),
         clientEmail: process.env.GOOGLE_CLOUD_SERVICE_ACCOUNT_CLIENT_EMAIL,
       }),
       storageBucket: process.env.GOOGLE_CLOUD_STORAGE_BUCKET,
