@@ -14,6 +14,11 @@ app.use(
   })
 );
 
+console.log(
+  "GOOGLE_CLOUD_SERVICE_ACCOUNT_PRIVATE_KEY",
+  process.env.GOOGLE_CLOUD_SERVICE_ACCOUNT_PRIVATE_KEY
+);
+
 // Middleware for parsing JSON and urlencoded data
 app.use(express.json());
 app.use(express.urlencoded({ extended: true, limit: "10mb" }));
